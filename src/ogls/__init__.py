@@ -55,11 +55,20 @@ def cov_ellipse(CM, p = .95):
 
 class OGLS_Regression():
 
-	def __init__(self, X, Y,
+	def __init__(self,
+		X, Y,
 		model_fun,
 		model_fun_J,
-		sX = None, sY = None, sYX = None,
-		bfp  = None, bfp_CM = None, chisq = None, Nf = None,
+		sX = None,
+		sY = None,
+		sYX = None,
+		bfp  = None,
+		bfp_CM = None,
+		chisq = None,
+		cholesky_residuals = None,
+		aic = None,
+		bic = None,
+		ks_pvalue = None,
 		method = 'least_squares',
 		):
 
@@ -67,17 +76,31 @@ class OGLS_Regression():
 		self.bfp = bfp                                     # bst-fit parameters
 		self.bfp_CM = np.asarray(bfp_CM, dtype = 'float')  # (co)variance matrix of bfp
 		self.chisq = chisq                                 # best-fit chi-square value
-		self.Nf = Nf                                       # degrees of freedom
-		self.red_chisq = chisq / Nf if Nf else None        # best-fit reduced chi-square value
-		try:
-			self.chisq_pvalue = chi2.cdf(chisq, Nf)
-		except:
-			self.chisq_pvalue = None
+		self.cholesky_residuals = cholesky_residuals
+		self.aic = aic
+		self.bic = bic
+		self.ks_pvalue = ks_pvalue
 
 		self.X = np.asarray(X, dtype = 'float')            # X observations
 		self.Y = np.asarray(Y, dtype = 'float')            # Y observations
-		
-		self.N = self.X.size  # N of observations
+
+		self.N = X.size                                    # N of observations
+
+		self.fit_params = Parameters()
+		for k in model_fun_J:
+			if k != 'X':
+				self.fit_params.add(k, value = 0)
+
+		self.Nf = self.N - len(self.fit_params)            # degrees of freedom
+
+		try:
+			self.red_chisq = chisq / self.Nf
+		except:
+			self.red_chisq = None
+		try:
+			self.chisq_pvalue = chi2.cdf(chisq, self.Nf)
+		except:
+			self.chisq_pvalue = None
 		
 		# assign X (co)variance:
 		if sX is None:
@@ -105,10 +128,6 @@ class OGLS_Regression():
 		else:
 			self.sYX = np.asarray(sYX)
 
-		self.fit_params = Parameters()
-		for k in model_fun_J:
-			if k != 'X':
-				self.fit_params.add(k, value = 0)
 
 		self.model_fun = model_fun
 		self.model_fun_J = model_fun_J
