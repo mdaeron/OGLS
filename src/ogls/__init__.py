@@ -84,7 +84,7 @@ class OGLS_Regression():
 		self.X = np.asarray(X, dtype = 'float')            # X observations
 		self.Y = np.asarray(Y, dtype = 'float')            # Y observations
 
-		self.N = X.size                                    # N of observations
+		self.N = self.X.size                                    # N of observations
 
 		self.fit_params = Parameters()
 		for k in model_fun_J:
