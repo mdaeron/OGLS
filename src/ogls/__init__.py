@@ -321,7 +321,7 @@ class Polynomial(OGLS_Regression):
 		self.degrees = degrees
 		f = lambda p,x: np.array([p[f'a{k}'] * x**k for k in degrees]).sum(axis = 0)
 		J = {
-			'X': lambda p,x: np.array([k * p[f'a{k}'] * x**(k-1) for k in degrees if k > 0]).sum(axis = 0),
+			'X': lambda p,x: np.array([k * p[f'a{k}'] * x**(max(1,k)-1) for k in degrees]).sum(axis = 0),
 			**{
 				f'a{k}': (lambda p,x,k=k: x**k)
 				for k in degrees
