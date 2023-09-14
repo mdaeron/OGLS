@@ -184,6 +184,10 @@ class OGLS_Regression():
 		self.aic = minresult.aic
 		self.bic = minresult.bic
 		self.ks_pvalue = kstest(self.cholesky_residuals, 'norm', (0, 1)).pvalue
+		if self.Nf:
+			self.chisq_pvalue = 1 - chi2.cdf(self.chisq, self.Nf)
+		else:
+			self.chisq_pvalue = None
 		
 		self.bfp = {k: minresult.params.valuesdict()[k] for k in self.fit_params}
 		self.bfp_CM = np.zeros((len(self.fit_params), len(self.fit_params)))
