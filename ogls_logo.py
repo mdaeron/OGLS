@@ -24,20 +24,22 @@ rcParams['grid.linestyle'] = '-'
 rcParams['grid.alpha'] = .15
 rcParams['savefig.dpi'] = 100
 
+yello = (1,.8,.2)
+
 from ogls import *
 
 X = [1, 2, 3, 4, 5]
 Y = [4, 0, 2, 3, 0]
 sX = [.15, .2, .08, .1, .05]
 sY = [.2, .2, .16, .5, .25]
-sXY = np.diag(np.array([.75,0,-.75,0,-.5])*np.array(sX)*np.array(sY))
+sYX = np.diag(np.array([.75,0,-.75,0,-.5])*np.array(sX)*np.array(sY))
 
 M = Polynomial(
 	X=X,
 	Y=Y,
 	sX=sX,
 	sY=sY,
-	sXY=sXY,
+	sYX=sYX,
 	degrees = [0,1,2,3],
 	)
 
@@ -45,10 +47,10 @@ M.regress(verbose = True, params = dict(a0 = 0, a1 = 0))
 # 	params = dict(a0 = 13, a1 = -1, a3 = .5)
 
 xmin, xmax = np.min(X)-.5, np.max(X)+.25
-mycolor = (.7,0,.8)
+mycolor = yello
 ppl.figure(figsize = (2, 1.5))
 ppl.subplots_adjust(.02,.02,.98,.98)
-M.plot_bff_ci(xi = np.linspace(xmin, xmax, 101), color = mycolor, zorder = -20)
+M.plot_bff_ci(xi = np.linspace(xmin, xmax, 101), color = mycolor, zorder = -20, alpha = 1/3)
 M.plot_bff(xi = np.linspace(xmin, xmax, 101), color = mycolor, lw = 2, zorder = -10)
 # M.plot_error_bars()
 M.plot_error_ellipses(ec = 'k')
@@ -58,4 +60,4 @@ ppl.xticks([])
 ppl.yticks([])
 ppl.axis([xmin, xmax, M.bff(xmax), M.bff(xmin)])
 ppl.setp(ppl.gca().spines.values(), color=(.75,.75,.75))
-ppl.savefig('OGLS.png')
+ppl.savefig('ogls_logo.png')
