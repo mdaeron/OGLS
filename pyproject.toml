@@ -5,10 +5,11 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "ogls"
 authors = [{name = "Mathieu Daëron", email = "daeron@lsce.ipsl.fr"}]
-readme = "README.md"
+readme = "readme.md"
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
+requires-python = ">=3.11"
 dependencies = [
 	"numpy >=1.24",
 	"scipy >=1.10",
