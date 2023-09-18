@@ -1,7 +1,5 @@
 '''
 Omnivariant generalized least-square regression
-
-.. include:: ../../doc/documentation.md
 '''
 
 __author__    = 'Mathieu Daëron'
@@ -9,8 +7,8 @@ __contact__   = 'daeron@lsce.ipsl.fr'
 __copyright__ = 'Copyright (c) 2023 Mathieu Daëron'
 __license__   = 'MIT License - https://opensource.org/licenses/MIT'
 __docformat__ = "restructuredtext"
-__date__      = '2023-04-30'
-__version__   = '0.1.0'
+__date__      = '2023-09-19'
+__version__   = '1.0'
 
 import numpy as np
 from scipy.stats import chi2, kstest
@@ -54,6 +52,9 @@ def cov_ellipse(CM, p = .95):
 	return width, height, rotation
 
 class OGLS_Regression():
+	'''
+	Define `(x,y)` data, their covariance matrix, and a model function `y = f(x)`.
+	'''
 
 	def __init__(self,
 		X, Y,
