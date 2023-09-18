@@ -1,5 +1,7 @@
 <img align="right" src="ogls_logo.png">
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8357231.svg)](https://doi.org/10.5281/zenodo.8357231)
+
 # OGLS
 
 Python library for Omnivariant Generalized Least-Square regression.
