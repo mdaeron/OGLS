@@ -1,6 +1,6 @@
 <img align="right" src="ogls_logo.png">
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8357231.svg)](https://doi.org/10.5281/zenodo.8357231)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8357230.svg)](https://doi.org/10.5281/zenodo.8357230)
 
 # OGLS
 
