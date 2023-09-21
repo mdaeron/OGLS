@@ -1,7 +1,7 @@
 <img align="right" src="ogls_logo.png">
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8357230.svg)](https://doi.org/10.5281/zenodo.8357230)
-[![PyPI version](https://badge.fury.io/py/ogls.svg)](https://badge.fury.io/py/ogls)
+[![PyPI Version](https://img.shields.io/pypi/v/ogls.svg)](https://pypi.python.org/pypi/ogls)
 
 # OGLS
 
