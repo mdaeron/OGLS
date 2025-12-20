@@ -1,4 +1,4 @@
-'''
+j'''
 Omnivariant generalized least-square regression
 '''
 
@@ -7,8 +7,8 @@ __contact__   = 'daeron@lsce.ipsl.fr'
 __copyright__ = 'Copyright (c) 2023 Mathieu Daëron'
 __license__   = 'MIT License - https://opensource.org/licenses/MIT'
 __docformat__ = "restructuredtext"
-__date__      = '2023-09-19'
-__version__   = '1.0'
+__date__      = '2025-12-20'
+__version__   = '1.0.1'
 
 import numpy as np
 from scipy.stats import chi2, kstest
@@ -151,7 +151,7 @@ class OGLS_Regression():
 		logger.debug(f'L =\n{L}')
 		logger.debug(f'L @ self.R =\n{L @ self.R}')
 		if self.N > len(p):
-			logger.debug(f'Reduced chi-squared = {float((L @ self.R).T @ (L @ self.R)) / (self.N - len(p))}')
+			logger.debug(f'Reduced chi-squared = {((L @ self.R).T @ (L @ self.R)).item() / (self.N - len(p))}')
 
 		return L @ self.R
 
