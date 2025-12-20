@@ -1,4 +1,4 @@
-j'''
+'''
 Omnivariant generalized least-square regression
 '''
 
