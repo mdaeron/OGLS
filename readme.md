@@ -2,6 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8357230.svg)](https://doi.org/10.5281/zenodo.8357230)
 [![PyPI Version](https://img.shields.io/pypi/v/ogls.svg)](https://pypi.python.org/pypi/ogls)
+![License](https://img.shields.io/pypi/l/ogls)
 
 # OGLS
 
